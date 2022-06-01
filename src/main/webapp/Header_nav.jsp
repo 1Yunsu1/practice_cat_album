@@ -26,9 +26,9 @@
             목록
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="./member/list.do">멤버리스트</a></li>
-            <li><a class="dropdown-item" href="./member/create.do">회원가입</a></li>
-            <li><a class="dropdown-item" href="./member/checker.do">로그인</a></li>
+            <li><a class="dropdown-item" href="/cat_album/member/list.do">멤버리스트</a></li>
+            <li><a class="dropdown-item" href="/cat_album/member/create.do">회원가입</a></li>
+            <li><a class="dropdown-item" href="/cat_album/member/checker.do">로그인</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>

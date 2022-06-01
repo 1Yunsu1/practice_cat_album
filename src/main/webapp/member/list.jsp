@@ -41,6 +41,7 @@
 			<th>BIRTH</th>
 			<th>ADDRESS</th>
 			<th>STATE</th>
+			<th>GRADE</th>
 			<th>UPDATE</th>
 			<th>DELETE</th>
 		</tr>
@@ -60,6 +61,7 @@
 			<td><%=mem.getBIRTH() %>  </td>
 			<td><%=mem.getADDRESS() %>  </td>
 			<td><%=mem.getSTATE() %>  </td>
+			<td><%=mem.getGRADE() %></td>
 			<td><a href="./update.do?NUMBER=<%=mem.getNUMBER() %>">click</a></td>
 			<td><a href="./delete.do?NUMBER=<%=mem.getNUMBER() %>">click</a></td>
 		</tr>

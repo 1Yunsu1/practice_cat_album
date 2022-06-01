@@ -12,7 +12,22 @@ public class MemberVo {
 	private Date BIRTH; 
 	private String ADDRESS; 
 	private String STATE;
+	private String GRADE;
 	
+	
+	@Override
+	public String toString() {
+		return "MemberVo [NUMBER=" + NUMBER + ", NAME=" + NAME + ", EMAIL=" + EMAIL + ", ID=" + ID + ", PASSWORD="
+				+ PASSWORD + ", GENDER=" + GENDER + ", BIRTH=" + BIRTH + ", ADDRESS=" + ADDRESS + ", STATE=" + STATE
+				+ ", GRADE=" + GRADE + "]";
+	}
+	
+	public String getGRADE() {
+		return GRADE;
+	}
+	public void setGRADE(String gRADE) {
+		GRADE = gRADE;
+	}
 	public int getNUMBER() {
 		return NUMBER;
 	}

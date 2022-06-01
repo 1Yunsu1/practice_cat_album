@@ -14,6 +14,7 @@ import cat_album.com.dao.*;
 public class MemberDao implements MemberDaoAble {
 	private String mysql_list = "select * from member";
 	private String mysql_datail = "select * from member where NUMBER = ?";
+	private String mysql_datail_ID = "select * from member where ID = ?";
 	private String mysql_create = "INSERT INTO member (NAME, EMAIL, ID, PASSWORD, GENDER,	BIRTH, ADDRESS, STATE )"
 								+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 	private String mysql_update = "UPDATE member "
@@ -43,6 +44,7 @@ public class MemberDao implements MemberDaoAble {
 			mem.setBIRTH(rs.getDate("BIRTH"));
 			mem.setADDRESS(rs.getString("ADDRESS"));
 			mem.setSTATE(rs.getString("STATE"));
+			mem.setGRADE(rs.getString("GRADE"));
 			list.add(mem);
 		}
 		
@@ -67,6 +69,32 @@ public class MemberDao implements MemberDaoAble {
 			mem.setBIRTH(rs.getDate("BIRTH"));
 			mem.setADDRESS(rs.getString("ADDRESS"));
 			mem.setSTATE(rs.getString("STATE"));
+			mem.setGRADE(rs.getString("GRADE"));
+		}
+		
+		System.out.println(mem.getEMAIL());
+		return mem;
+	}
+	
+	@Override
+	public MemberVo detail(String ID) throws SQLException, ClassNotFoundException {
+		Connection conn = CatAlbumConnection.getConnection();
+		PreparedStatement ps = conn.prepareStatement(mysql_datail_ID);
+		ps.setString(1, ID);
+		ResultSet rs = ps.executeQuery();
+		MemberVo mem = new MemberVo(); 
+		
+		while(rs.next()) {
+			mem.setNUMBER(rs.getInt("NUMBER"));
+			mem.setNAME(rs.getString("NAME"));
+			mem.setEMAIL(rs.getString("EMAIL"));
+			mem.setID(rs.getString("ID"));
+			mem.setPASSWORD(rs.getString("PASSWORD"));
+			mem.setGENDER(rs.getString("GENDER"));
+			mem.setBIRTH(rs.getDate("BIRTH"));
+			mem.setADDRESS(rs.getString("ADDRESS"));
+			mem.setSTATE(rs.getString("STATE"));
+			mem.setGRADE(rs.getString("GRADE"));
 		}
 		
 		System.out.println(mem.getEMAIL());
@@ -148,7 +176,7 @@ public class MemberDao implements MemberDaoAble {
 		ps.setString(1, ID);
 		ps.setString(2, PASSWORD);
 		ResultSet rs = ps.executeQuery();
-		
+		System.out.println("rs = "+ (rs==null));
 		if(rs.next()) {
 			return true;			
 		}

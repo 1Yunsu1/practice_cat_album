@@ -26,20 +26,26 @@ public class MemberChecker extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		String ID = req.getParameter("ID");
 		boolean checker = false;
+		int grade = 0;
 		
 		HttpSession session = req.getSession();
 		
+		
+		
 		try {
 			checker = dao.mem_checker(req.getParameter("ID"), req.getParameter("PASSWORD"));
+			if(checker) {				
+				grade = Integer.parseInt(dao.detail(req.getParameter("ID")).getGRADE());
+			}
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		session.setAttribute("ID", ID);
 		if(checker) {
-			resp.sendRedirect("../");
-//			resp.sendRedirect("../album/list.do?ID="+ID);
+			session.setAttribute("ID", ID);
+			session.setAttribute("GRADE", grade);
+			resp.sendRedirect("/cat_album");
 		}
 		else {
 			resp.sendRedirect("./checker.do?login_fail");
