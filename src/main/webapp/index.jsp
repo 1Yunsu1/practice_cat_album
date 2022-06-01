@@ -11,6 +11,8 @@
 		position:relative;
 		left : 50%;
 		transform : translate(-10%, 0%);
+		padding-top: 10px;
+		padding-bottom: 10px;
 	}
 	
 </style>
